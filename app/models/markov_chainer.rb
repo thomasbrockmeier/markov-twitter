@@ -1,0 +1,2 @@
+class MarkovChainer < ApplicationRecord
+end

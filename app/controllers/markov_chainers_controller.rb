@@ -1,13 +1,34 @@
 class MarkovChainersController < ApplicationController
+
   def index
     @markov ||= MarkovChainer.new
   end
 
   def create
-    @markov = MarkovChainer.new(markov_chainer_params)
-    flash[:input_text] = @markov.process_input
+    # binding.pry
 
-    redirect_to root_path
+    p 'markov_chainer_params'
+    p markov_chainer_params
+
+    @markov = MarkovChainer.new(markov_chainer_params)
+
+    p @markov.process_input
+
+    respond_to do |format|
+      if response_string = @markov.process_input
+        format.html {
+          # flash[:input_text] = response_string
+          # redirect_to root_path
+        }
+        format.json {
+          p 'render json'
+          render json: response_string.to_json
+        }
+      end
+
+
+
+    end
   end
 
 

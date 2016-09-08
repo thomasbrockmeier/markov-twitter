@@ -1,0 +1,2 @@
+class MarkovChainersController < ApplicationController
+end

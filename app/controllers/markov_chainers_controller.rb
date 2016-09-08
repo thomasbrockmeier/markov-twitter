@@ -5,10 +5,7 @@ class MarkovChainersController < ApplicationController
 
   def create
     @markov = MarkovChainer.new(markov_chainer_params)
-
     flash[:input_text] = @markov.process_input
-    flash[:order] = @markov[:order]
-    flash[:n_sentences] = @markov[:n_sentences]
 
     redirect_to root_path
   end

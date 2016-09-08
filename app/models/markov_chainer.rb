@@ -8,7 +8,7 @@ class MarkovChainer < ApplicationRecord
   end
 
   def process_input
-    markov = MarkyMarkov::TemporaryDictionary.new
+    markov = MarkyMarkov::Dictionary.new('dictionary', self.order)
     markov.parse_string(self.input_text)
     markov.generate_n_sentences n_sentences
   end

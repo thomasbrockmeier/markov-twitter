@@ -32,12 +32,9 @@ function submitForm(event) {
     }).fail(function(error) {
       console.log(error);
     })
-  ).then(
-    function() {
-      $(':submit').attr('disabled', false)
-    });
-
-
+  ).then(function() {
+    $(':submit').attr('disabled', false)
+  });
 };
 
 $(document).ready(function() {

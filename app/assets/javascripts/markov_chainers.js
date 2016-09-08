@@ -32,11 +32,15 @@ function submitForm(event) {
   }).done(function(data) {
     console.log(data);
     $('.markified-text').html("<p>" + data + "</p>");
+    enableSubmit()
   }).fail(function(error) {
     console.log(error)
+    enableSubmit()
   });
 
-
+  function enableSubmit() {
+    $(':submit').attr('disabled', false)
+  };
 };
 
 $(document).ready(function() {

@@ -1,12 +1,14 @@
-<%= form_for @markov, url: {action: 'create'} do |f| %>
-  <%= f.label :input_text %>
-  <%= f.text_area :input_text, size: '35x20' %><br />
+<div id='form'>
+  <%= form_for @markov, url: {action: 'create'} do |f| %>
+    <%= f.label :input_text %>
+    <%= f.text_area :input_text, size: '35x20' %><br />
 
-  <%= f.label :order %>
-  <%= f.number_field :order, in: 1..5 %><br />
+    <%= f.label :order %>
+    <%= f.number_field :order, in: 1..5 %><br />
 
-  <%= f.label :n_sentences %>
-  <%= f.number_field :n_sentences, in: 1..20 %><br />
+    <%= f.label :n_sentences %>
+    <%= f.number_field :n_sentences, in: 1..20 %><br />
 
-  <%= f.submit 'Markify' %>
-<% end %>
+    <%= f.submit 'Markify' %>
+  <% end %>
+</div>

@@ -18,29 +18,26 @@ function submitForm(event) {
 
   var action = $(this).attr('action');
   var method = $(this).attr('method');
-
   var processedForm = processForm();
 
-  console.log(processedForm)
+  $.when(
+    $.ajax({
+      type: method,
+      url: action,
+      data: processedForm,
+      contentType: 'application/json',
+      dataType: 'json'
+    }).done(function(data) {
+      $('.markified-text').html("<p>" + data + "</p>");
+    }).fail(function(error) {
+      console.log(error);
+    })
+  ).then(
+    function() {
+      $(':submit').attr('disabled', false)
+    });
 
-  $.ajax({
-    type: method,
-    url: action,
-    data: processedForm,
-    contentType: 'application/json',
-    dataType: 'json'
-  }).done(function(data) {
-    console.log(data);
-    $('.markified-text').html("<p>" + data + "</p>");
-    enableSubmit()
-  }).fail(function(error) {
-    console.log(error)
-    enableSubmit()
-  });
 
-  function enableSubmit() {
-    $(':submit').attr('disabled', false)
-  };
 };
 
 $(document).ready(function() {

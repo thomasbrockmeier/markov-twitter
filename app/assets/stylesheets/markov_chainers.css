@@ -4,6 +4,7 @@ body {
   font-family: 'Arial';
   font-size: 24px;
   text-align: center;
+  text-transform: uppercase;
 }
 
 div {
@@ -21,6 +22,7 @@ input, textarea {
 
 .form {
   border: #FFF solid thick;
+  word-spacing: -0.25em;
 }
 
 .markov-option, .input-text {
@@ -28,10 +30,15 @@ input, textarea {
 }
 
 .markified-text {
-  margin-top: 5vw;
+  font-size: 18px;
+  margin-top: 3vw;
+  text-transform: none;
   text-align: justify;
 }
 
 .title {
-  font-size: 36px;
+  font-size: 24px;
+  letter-spacing: 0.4vw;
+  text-align: center;
+  word-spacing: -0.75em;
 }

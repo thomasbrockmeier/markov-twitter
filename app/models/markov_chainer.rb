@@ -1,3 +1,5 @@
+require 'TwitterClient'
+
 class MarkovChainer < ApplicationRecord
   after_initialize :init
 
@@ -7,9 +9,38 @@ class MarkovChainer < ApplicationRecord
     self.n_sentences ||= 5
   end
 
+  # Used to process whatever text is enterend on the view. Used for testing puropses
   def process_input
     markov = MarkyMarkov::Dictionary.new('dictionary', self.order)
     markov.parse_string(self.input_text)
     markov.generate_n_sentences n_sentences
+  end
+
+  def process_twitter_account
+    filtered_text = filter_text(extract_text(retrieve_tweets(self.input_text)))
+
+    markov = MarkyMarkov::Dictionary.new('dictionary', self.order)
+    markov.parse_string(filtered_text)
+    markov.generate_n_sentences n_sentences
+
+  end
+
+  def retrieve_tweets(twitter_handle)
+    c = TwitterClient.new.client
+    c.user_timeline(twitter_handle, {count: 200})
+  end
+
+  def extract_text(tweets)
+    text = ''
+    tweets.each do |t|
+      text << (t::text) + ' '
+    end
+
+    text
+  end
+
+  def filter_text(text)
+    # Remove hashtags, handlers, and URLs (#hashtag, @kanyewest, http(s)://..., www....)
+    text.gsub(/(#\S*|@\S*|http(|s):\/\/\S*|www.\S*)/i, '')
   end
 end

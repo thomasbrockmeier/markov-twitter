@@ -21,3 +21,7 @@
 .byebug_history
 
 input_text.txt
+Gemfile.lock
+
+# Ignore application configuration
+/config/application.yml

@@ -25,9 +25,6 @@ class MarkovChainersController < ApplicationController
           render json: response_string.to_json
         }
       end
-
-
-
     end
   end
 

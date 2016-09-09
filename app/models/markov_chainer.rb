@@ -28,7 +28,7 @@ class MarkovChainer < ApplicationRecord
 
   def retrieve_tweets(twitter_handle)
     c = TwitterClient.new.client
-    tweets = c.user_timeline(twitter_handle, {count: 200})
+    c.user_timeline(twitter_handle, {count: 200})
   end
 
   def extract_text(tweets)
@@ -42,6 +42,6 @@ class MarkovChainer < ApplicationRecord
 
   def filter_text(text)
     # Remove hashtags, handlers, and URLs (#hashtag, @kanyewest, http(s)://...)
-     processed_text = text.gsub(/(#\S*|@\S*|http(|s):\/\/\S*|www.\S*)/i, '')
+    text.gsub(/(#\S*|@\S*|http(|s):\/\/\S*|www.\S*)/i, '')
   end
 end

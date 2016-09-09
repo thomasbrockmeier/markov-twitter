@@ -18,6 +18,10 @@ class MarkovChainersController < ApplicationController
         format.json {
           render json: response_string.to_json
         }
+      else
+        format.json {
+          render json: "ERROR"
+        }
       end
     end
   end

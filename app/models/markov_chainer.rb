@@ -9,6 +9,7 @@ class MarkovChainer < ApplicationRecord
     self.n_sentences ||= 5
   end
 
+  # Used to process whatever text is enterend on the view. Used for testing puropses
   def process_input
     markov = MarkyMarkov::Dictionary.new('dictionary', self.order)
     markov.parse_string(self.input_text)
@@ -16,9 +17,7 @@ class MarkovChainer < ApplicationRecord
   end
 
   def process_twitter_account
-    tweets = retrieve_tweets(self.input_text)
-    text = extract_text(tweets)
-    filtered_text = filter_text(text)
+    filtered_text = filter_text(extract_text(retrieve_tweets(self.input_text)))
 
     markov = MarkyMarkov::Dictionary.new('dictionary', self.order)
     markov.parse_string(filtered_text)

@@ -40,7 +40,7 @@ class MarkovChainer < ApplicationRecord
   end
 
   def filter_text(text)
-    # Remove hashtags, handlers, and URLs (#hashtag, @kanyewest, http(s)://...)
+    # Remove hashtags, handlers, and URLs (#hashtag, @kanyewest, http(s)://..., www....)
     text.gsub(/(#\S*|@\S*|http(|s):\/\/\S*|www.\S*)/i, '')
   end
 end

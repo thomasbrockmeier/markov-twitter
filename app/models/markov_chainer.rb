@@ -13,9 +13,7 @@ class MarkovChainer < ApplicationRecord
 
 
   def process_twitter_account
-    response = verify_account(self.input_text)
-
-    if response[0]
+    begin
       p "Getting tweets"
       tweets = get_all_tweets(self.input_text)
       p "Got tweets"
@@ -24,8 +22,9 @@ class MarkovChainer < ApplicationRecord
       markov = MarkyMarkov::Dictionary.new('dictionary', self.order)
       markov.parse_string(filtered_text)
       markov.generate_n_sentences n_sentences
-    else
-      response[1]
+    rescue Twitter::Error => e
+      p "Error: #{e}"
+      e
     end
   end
 

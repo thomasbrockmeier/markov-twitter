@@ -29,7 +29,7 @@ class MarkovChainer < ApplicationRecord
   end
 
 
-
+  private
   # Recursive call to Twitter API
   # Source: https://github.com/sferik/twitter/blob/master/examples/AllTweets.md
   def collect_with_max_id(collection=[], max_id=nil, &block)

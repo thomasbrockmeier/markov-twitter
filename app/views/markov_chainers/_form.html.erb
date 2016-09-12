@@ -8,7 +8,7 @@
       </div>
 
       <div class="form-input">
-        <%= f.text_field :input_text, size: '20x1' %><br />
+        <%= f.text_field :input_text, size: '40x1', :placeholder => "TWITTERHANDLE" %>
       </div>
     </div>
 
@@ -21,6 +21,8 @@
         <%= f.number_field :order, in: 1..5 %>
       </div>
     </div>
+
+    <br />
 
     <div class='markov-option'>
       <div class="form-label">
@@ -44,7 +46,7 @@
 
     <div class='markov-option'>
       <div class="form-input">
-        <%= f.submit 'Markify' %>
+        <%= f.submit 'MARKIFY' %>
       </div>
     </div>
   </div>

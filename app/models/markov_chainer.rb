@@ -26,19 +26,9 @@ class MarkovChainer < ApplicationRecord
     end
   end
 
-  def verify_account(twitter_handle)
-    begin
-      p @c.user(twitter_handle)
-      [true]
-    rescue Twitter::Error => e
-      p "Error: #{e}"
-      [false, e]
-    end
-  end
 
-  def retrieve_tweets(twitter_handle)
-      @c.user_timeline(twitter_handle, {count: 200})
-  end
+
+  # Helper functions
 
   def extract_text(tweets)
     text = ''
@@ -54,6 +44,19 @@ class MarkovChainer < ApplicationRecord
     text.gsub(/(#\S*|@\S*|http(|s):\/\/\S*|www.\S*)/i, '')
   end
 
+  def retrieve_tweets(twitter_handle)
+      @c.user_timeline(twitter_handle, {count: 200})
+  end
+
+  def verify_account(twitter_handle)
+    begin
+      p @c.user(twitter_handle)
+      [true]
+    rescue Twitter::Error => e
+      p "Error: #{e}"
+      [false, e]
+    end
+  end
 
 
 

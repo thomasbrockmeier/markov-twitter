@@ -22,7 +22,11 @@ class MarkovChainer < ApplicationRecord
 
       markov = MarkyMarkov::Dictionary.new('dictionary', self.order)
       markov.parse_string(filtered_text)
-      markov.generate_n_sentences n_sentences
+
+      generate_paragraphs(markov, self.n_paragraphs, self.n_sentences)
+
+      p self.n_paragraphs
+
     rescue Twitter::Error => e
       p "Error: #{e}"
       e
@@ -62,6 +66,16 @@ class MarkovChainer < ApplicationRecord
   def filter_text(text)
     # Remove hashtags, handlers, and URLs (#hashtag, @kanyewest, http(s)://..., www....)
     text.gsub(/(#\S*|@\S*|http(|s):\/\/\S*|www.\S*)/i, '')
+  end
+
+  def generate_paragraphs(markov, n_paragraphs, n_sentences)
+    p n_paragraphs
+    output = ''
+    for i in 0...n_paragraphs
+      p i
+      output << "<p>#{markov.generate_n_sentences n_sentences}</p>"
+    end
+    output
   end
 end
 

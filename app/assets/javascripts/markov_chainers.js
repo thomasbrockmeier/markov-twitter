@@ -2,12 +2,14 @@ function processForm() {
   // debugger;
   var input_text = $(document).find('#markov_chainer_input_text').val();
   var order = $(document).find('#markov_chainer_order').val();
+  var n_paragraphs = $(document).find('#markov_chainer_n_paragraphs').val();
   var n_sentences = $(document).find('#markov_chainer_n_sentences').val();
 
   var data = JSON.stringify({
     input_text: input_text,
     order: order,
-    n_sentences: n_sentences
+    n_sentences: n_sentences,
+    n_paragraphs: n_paragraphs
   });
 
   return data;

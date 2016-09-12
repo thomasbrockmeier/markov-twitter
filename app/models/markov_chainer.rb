@@ -8,7 +8,7 @@ class MarkovChainer < ApplicationRecord
     self.order ||= 2
     self.n_sentences ||= 5
 
-    @c = TwitterClient.new.client
+    @c ||= TwitterClient.new.client
   end
 
 

@@ -10,14 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160908094930) do
+ActiveRecord::Schema.define(version: 20160912121008) do
 
   create_table "markov_chainers", force: :cascade do |t|
     t.text     "input_text"
     t.integer  "order"
     t.integer  "n_sentences"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "n_paragraphs"
   end
 
 end

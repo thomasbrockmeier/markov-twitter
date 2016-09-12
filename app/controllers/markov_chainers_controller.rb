@@ -33,6 +33,7 @@ class MarkovChainersController < ApplicationController
     params.require(:markov_chainer).permit(
       :input_text,
       :order,
+      :n_paragraphs,
       :n_sentences
     )
   end

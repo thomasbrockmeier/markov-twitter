@@ -24,6 +24,16 @@
 
     <div class='markov-option'>
       <div class="form-label">
+        <%= f.label :n_paragraphs %>
+      </div>
+
+      <div class="form-input">
+        <%= f.number_field :n_paragraphs, in: 1..5 %>
+      </div>
+    </div>
+
+    <div class='markov-option'>
+      <div class="form-label">
         <%= f.label :n_sentences %>
       </div>
 

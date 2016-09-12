@@ -7,7 +7,7 @@ class MarkovChainersController < ApplicationController
   def create
     # binding.pry
 
-    @markov = MarkovChainer.new(markov_chainer_params)
+    @markov ||= MarkovChainer.new(markov_chainer_params)
 
     respond_to do |format|
       if response_string = @markov.process_twitter_account
@@ -17,6 +17,10 @@ class MarkovChainersController < ApplicationController
         }
         format.json {
           render json: response_string.to_json
+        }
+      else
+        format.json {
+          render json: "ERROR"
         }
       end
     end

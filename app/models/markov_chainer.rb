@@ -25,8 +25,6 @@ class MarkovChainer < ApplicationRecord
 
       generate_paragraphs(markov, self.n_paragraphs, self.n_sentences)
 
-      p self.n_paragraphs
-
     rescue Twitter::Error => e
       p "Error: #{e}"
       e
@@ -69,10 +67,8 @@ class MarkovChainer < ApplicationRecord
   end
 
   def generate_paragraphs(markov, n_paragraphs, n_sentences)
-    p n_paragraphs
     output = ''
-    for i in 0...n_paragraphs
-      p i
+    (0...n_paragraphs).each do
       output << "<p>#{markov.generate_n_sentences n_sentences}</p>"
     end
     output

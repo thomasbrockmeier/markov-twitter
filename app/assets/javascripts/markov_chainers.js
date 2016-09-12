@@ -13,7 +13,7 @@ function processForm() {
   });
 
   return data;
-};
+}
 
 function submitForm(event) {
   event.preventDefault();
@@ -35,9 +35,9 @@ function submitForm(event) {
       console.log(error);
     })
   ).then(function() {
-    $(':submit').attr('disabled', false)
+    $(':submit').attr('disabled', false);
   });
-};
+}
 
 $(document).ready(function() {
   $('#new_markov_chainer').bind('submit', submitForm);

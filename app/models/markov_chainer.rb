@@ -68,8 +68,8 @@ class MarkovChainer < ApplicationRecord
 
   def generate_paragraphs(markov, n_paragraphs, n_sentences)
     output = ''
-    (0...n_paragraphs).each do
-      output << "<p>#{markov.generate_n_sentences n_sentences}</p>"
+    (0...n_paragraphs).each do |p|
+      output << "<p id=\"paragraph_id=#{p}\">#{markov.generate_n_sentences n_sentences}</p>"
     end
     output
   end

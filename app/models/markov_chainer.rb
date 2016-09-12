@@ -6,7 +6,7 @@ class MarkovChainer < ApplicationRecord
   def init
     self.input_text ||= ''
     self.order ||= 2
-    self.n_paragraphs ||= 1
+    self.n_paragraphs ||= 3
     self.n_sentences ||= 5
 
     @c ||= TwitterClient.new.client

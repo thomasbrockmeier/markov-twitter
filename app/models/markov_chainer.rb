@@ -16,13 +16,33 @@ class MarkovChainer < ApplicationRecord
     response = verify_account(self.input_text)
 
     if response[0]
-      filtered_text = filter_text(extract_text(retrieve_tweets(self.input_text)))
+      p "Getting tweets"
+      tweets = get_all_tweets(self.input_text)
+      p "Got tweets"
+      filtered_text = filter_text(extract_text(tweets))
 
       markov = MarkyMarkov::Dictionary.new('dictionary', self.order)
       markov.parse_string(filtered_text)
       markov.generate_n_sentences n_sentences
     else
       response[1]
+    end
+  end
+
+
+
+  # Recursive call to Twitter API
+  def collect_with_max_id(collection=[], max_id=nil, &block)
+    response = yield(max_id)
+    collection += response
+    response.empty? ? collection.flatten : collect_with_max_id(collection, response.last.id - 1, &block)
+  end
+
+  def get_all_tweets(twitter_handle)
+    collect_with_max_id do |max_id|
+      options = {count: 200, include_rts: false}
+      options[:max_id] = max_id unless max_id.nil?
+      @c.user_timeline(twitter_handle, options)
     end
   end
 

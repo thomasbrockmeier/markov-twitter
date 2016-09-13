@@ -42,3 +42,17 @@ input, textarea {
   text-align: center;
   word-spacing: -0.75em;
 }
+
+
+/*Loader*/
+.spinner-overlay {
+  position: absolute;
+
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  from { box-shadow: 0 0 120px 25px #FFF; }
+	50%  { box-shadow: 0 0 120px 5px #FFF; }
+	to   { box-shadow: 0 0 120px 25px #FFF; }
+}

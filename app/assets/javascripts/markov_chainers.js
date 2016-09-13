@@ -1,3 +1,23 @@
+function hideLoadingGFX(targetElement) {
+  $(targetElement).unblock();
+}
+
+function showLoadingGFX(targetElement) {
+  $(targetElement).block({
+    blockMsgClass: 'spinner-overlay',
+    css: {
+      backgroundColor: '#000',
+      border: '0px',
+      borderRadius: '50%',
+    	boxShadow: '0 0 120px 25px #FFF',
+      height: '50px',
+      opacity: 0.75,
+      width: '50px'
+    },
+    message: ' '
+  });
+}
+
 function processForm() {
   // debugger;
   var input_text = $(document).find('#markov_chainer_input_text').val();
@@ -18,7 +38,7 @@ function processForm() {
 function submitForm(event) {
   event.preventDefault();
 
-  $('.form').block({ message: null});
+  showLoadingGFX('.form');
 
   var action = $(this).attr('action');
   var method = $(this).attr('method');
@@ -37,7 +57,7 @@ function submitForm(event) {
       console.log(error);
     })
   ).then(function() {
-    $('.form').unblock();
+    hideLoadingGFX('.form');
     $(':submit').attr('disabled', false);
   });
 }

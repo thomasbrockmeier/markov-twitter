@@ -4,6 +4,8 @@ gem 'figaro'
 gem 'marky_markov'
 gem 'pry'
 gem 'twitter'
+gem 'readthis'
+gem 'hiredis'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'

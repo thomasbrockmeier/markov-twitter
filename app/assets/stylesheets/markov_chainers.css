@@ -11,8 +11,10 @@ div {
   margin: 0.5vw;
 }
 
-input, textarea {
+input, label {
   font-size: 24px;
+  padding: 5px;
+  vertical-align:sub;
 }
 
 .container {
@@ -23,6 +25,13 @@ input, textarea {
 .form {
   border: #FFF solid thick;
   word-spacing: -0.25em;
+}
+
+.form-disclaimer {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 0.5vw;
+  word-spacing: 0.1em;
 }
 
 .markov-option, .input-text {
@@ -41,6 +50,10 @@ input, textarea {
   letter-spacing: 0.4vw;
   text-align: center;
   word-spacing: -0.75em;
+}
+
+.upper-form > div + div {
+  margin-left: 10%;
 }
 
 

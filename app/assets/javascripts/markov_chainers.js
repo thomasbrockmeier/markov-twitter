@@ -18,6 +18,8 @@ function processForm() {
 function submitForm(event) {
   event.preventDefault();
 
+  $('.form').block({ message: null});
+
   var action = $(this).attr('action');
   var method = $(this).attr('method');
   var processedForm = processForm();
@@ -35,6 +37,7 @@ function submitForm(event) {
       console.log(error);
     })
   ).then(function() {
+    $('.form').unblock();
     $(':submit').attr('disabled', false);
   });
 }

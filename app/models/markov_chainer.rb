@@ -42,7 +42,7 @@ class MarkovChainer < ApplicationRecord
   end
 
   def get_all_tweets(twitter_handle)
-    Rails.cache.fetch(twitter_handle, expires_in: 5.minutes) do
+    Rails.cache.fetch(twitter_handle, expires_in: 15.minutes) do
       collect_with_max_id do |max_id|
         options = {count: 200, include_rts: false}
         options[:max_id] = max_id unless max_id.nil?

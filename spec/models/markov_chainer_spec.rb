@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe MarkovChainer do
   describe '.initialize' do
-    context "creates instance" do
+    context "when initialized" do
       it "without arguments" do
         mc = MarkovChainer.new
         expect(mc).to be_a MarkovChainer

@@ -27,4 +27,35 @@ describe MarkovChainer do
       end
     end
   end
+
+  describe '.process_twitter_account' do
+    mc = MarkovChainer.new(
+    input_text: "kanyewest",
+    order: 2,
+    n_paragraphs: 2,
+    n_sentences: 2
+    )
+
+    processed_text = mc.process_twitter_account
+
+    it 'returns a string' do
+      expect(processed_text.class).to eql(String)
+    end
+
+    it 'consists of n_paragraphs' do
+      expect(processed_text.scan(/<\s*p[^>]*>/i).size).to eql(mc.n_paragraphs)
+    end
+
+    it 'does not contain URLs' do
+      expect(processed_text.scan(/(http(|s):\/\/\S*|www.\S*)/i).size).to eql(0)
+    end
+
+    it 'does not contain hashtags' do
+      expect(processed_text.scan(/(#\S*)/).size).to eql(0)
+    end
+
+    it 'does not contain Twitter handles' do
+      expect(processed_text.scan(/(@\S*)/).size).to eql(0)
+    end
+  end
 end

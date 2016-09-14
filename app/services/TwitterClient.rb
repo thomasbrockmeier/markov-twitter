@@ -29,7 +29,7 @@ class TwitterClient
 
   def verify_account(twitter_handle)
     begin
-      p @c.user(twitter_handle)
+      p @client.user(twitter_handle)
       true
     rescue Twitter::Error => e
       p "Error: #{e}"

@@ -13,4 +13,20 @@ describe TwitterClient do
       end
     end
   end
+
+  describe '.verify_account' do
+    context 'calling this method' do
+      it 'verifies a Twitter account\'s existence' do
+        c = TwitterClient.new
+        expect(c.verify_account('kanyewest')).to be true
+      end
+    end
+  end
+
+  describe '.get_all_tweets' do
+    it 'gets up to 3200 tweets' do
+      c = TwitterClient.new
+      expect(c.get_all_tweets('kanyewest').length).to be_between(1, 3200).inclusive
+    end
+  end
 end

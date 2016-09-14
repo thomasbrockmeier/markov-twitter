@@ -6,6 +6,7 @@ gem 'marky_markov'
 gem 'pry'
 gem 'readthis'
 gem 'rspec'
+gem 'rspec-rails'
 gem 'twitter'
 
 

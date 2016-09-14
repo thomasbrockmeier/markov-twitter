@@ -1,4 +1,4 @@
-require 'TwitterClient'
+require_relative '../services/TwitterClient'
 
 class MarkovChainer < ApplicationRecord
   after_initialize :init
